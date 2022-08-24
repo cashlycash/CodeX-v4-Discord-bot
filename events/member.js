@@ -1,8 +1,3 @@
-const Canvas = require("canvas");
-const { registerFont, createCanvas } = require("canvas");
-const fs = require("fs");
-registerFont("./fonts/CAL.ttf", { family: "college" });
-const { MessageAttachment } = require("discord.js");
 const { MessageActionRow, MessageButton, MessageEmbed } = require("discord.js");
 const client = require("../index");
 const db = require("quick.db");
