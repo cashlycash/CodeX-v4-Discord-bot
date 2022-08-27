@@ -18,7 +18,7 @@ module.exports = {
 
     const user = interaction.options.getMember("user");
 
-    if (user.id == client.user.id || whitelist.inclues(user.id)) {
+    if (user.id == client.user.id || whitelist.includes(user.id)) {
       const check = client.ctbully.includes(interaction.user.id);
       if (check) {
         client.ctbully.splice(client.ctbully.indexOf(interaction.user.id), 1);
