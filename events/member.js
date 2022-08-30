@@ -8,7 +8,7 @@ client.on("guildMemberAdd", async (member) => {
         new MessageButton() 
           .setLabel('Verify portal')
           .setStyle('LINK')
-          .setURL('https://discord.com/channels/1004104875522666578/1004112419410423809/1009463580120326144')
+          .setURL(client.config.verify.panelurl)
       )
   member.send({
     content: "> Please verify yourself to get the full access of the server\n> Click the button below to go the verification portal",
@@ -25,7 +25,7 @@ client.on('guildMemberRemove', async member => {
 	member.guild.channels.cache.get(client.config.leave.channel).send({embeds: [emb]})
 
 	var count = member.guild.members.cache
-	const no = count.filter(member => !member.user.bot).size
+	const no = count.size
   client.channels.cache.get(client.config.count.channel)
     .setName(client.config.count.format.replace(`:no:`,no))
 })

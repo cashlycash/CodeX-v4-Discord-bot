@@ -1,7 +1,7 @@
 const client = require("../index.js");
 
 client.on("messageCreate", async (message) => {
-  const i = await message.content.match(/discord(?:\.com|app\.com|\.gg)[\/invite\/]?(?:[a-zA-Z0-9\-]{2,32})/g)
+  const i = await message.content.match(/(https:\/\/)?(www\.)?(((discord(app)?)?\.com\/invite)|((discord(app)?)?\.gg))\/(?<invite>.+)/gm)
   if (i && !message.member.permissions.has(['ADMINISTRATOR'])){
     await message.reply('NO DISCORD INVITES PLEASE')
     await message.delete()

@@ -51,7 +51,7 @@ module.exports = {
           );
 
           c.send({
-            content: `<@&${client.config.ticket.ping}> | <@${interaction.user.id}>`,
+            content: `@here | <@${interaction.user.id}>`,
             embeds: [emb],
             components: [btn],
           });

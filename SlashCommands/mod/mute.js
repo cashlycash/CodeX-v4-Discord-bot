@@ -32,7 +32,7 @@ module.exports = {
   ],
   run: async (client, interaction) => {
     const u = interaction.options.getMember("user")
-    const r = interaction.options.get("reason")
+    const r = interaction.options.getString("reason")
     let timeAdded = interaction.options.getString("time")
 
     const ea = new MessageEmbed()
