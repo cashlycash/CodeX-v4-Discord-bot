@@ -7,7 +7,7 @@ module.exports = {
     const pps = message.mentions.members;
     const array = pps.toJSON();
     const unlucky = array[Math.floor(Math.random() * array.length)];
-    unlucky.timeout(ms("5m"), "roulette")
+    unlucky.timeout(ms("1m"), "roulette")
     message.reply(`> **<@!${unlucky.user.id}>** got \`UNLUCKY\` and muted for 5m :rofl:`)
   },
 };
