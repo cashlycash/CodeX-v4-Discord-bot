@@ -3,6 +3,8 @@ const Nuggies = require("nuggies");
 const discordModals = require('discord-modals');
 const logs = require('discord-logs');
 
+require('dotenv').config();
+
 const client = new Client({
   intents: [
     "GUILDS",
