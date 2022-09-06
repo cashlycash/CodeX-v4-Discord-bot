@@ -5,7 +5,7 @@ const {
 } = require("discord.js");
 
 module.exports = {
-  id: "tkt",
+  id: "tkt:m",
   run: async (client, interaction) => {
     const everyoneRole = interaction.guild.roles.cache.find(
         (r) => r.name == "@everyone"
