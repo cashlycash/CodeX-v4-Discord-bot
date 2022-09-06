@@ -7,9 +7,9 @@ module.exports = {
   description: "Retrive the information of a server member.",
   options: [
     {
-      name: "user",
+      name: "member",
       description: "Person whom you want information about",
-      type: "USER",
+      type: "MEMBER",
       required: false,
     },
   ],
