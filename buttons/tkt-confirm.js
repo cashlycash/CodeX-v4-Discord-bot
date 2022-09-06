@@ -8,7 +8,7 @@ module.exports = {
       .setDescription(
         "Are you sure you wanna open a ticket? This will send a notification to all the online admins in the discord server and make a new channel just for your conversation with the admins. Please don't instantly close your ticket after making."
       )
-      .setColor("BLURPLE");
+      .setColor("RED");
 
     const btn = new MessageActionRow().setComponents(
       new MessageButton()
