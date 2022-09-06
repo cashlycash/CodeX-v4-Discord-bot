@@ -14,7 +14,7 @@ module.exports = {
     },
   ],
 	run: async (client, interaction) => {
-        const member = interaction.guild.members.cache.get(interaction.options.getUser("member").id) || interaction.member
+        const member = interaction.options.getMember("member") || interaction.member
         const activities = member.presence?.activities || []
 
         const focusActivity = activities.find(x => x.assets)
