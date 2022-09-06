@@ -14,7 +14,7 @@ module.exports = {
     const Channel = Text + Voice + Category + Stage
     const Emoji = guild.emojis.cache.size;
     const Roles = guild.roles.cache.size;
-    const time = guild.createdTimestamp.toString().slice(0, -4)
+    const time = guild.createdTimestamp.toString().slice(0, -3)
 
 
     let embed = new MessageEmbed()

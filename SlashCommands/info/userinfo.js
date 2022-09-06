@@ -22,7 +22,7 @@ module.exports = {
         .setAuthor(member.user.tag, member.user.displayAvatarURL())
         .setColor(member.displayHexColor === "#000000" ? "#ffffff" : member.displayHexColor)
         .setThumbnail(focusActivity ? `https://cdn.discordapp.com/app-assets/${focusActivity.applicationId}/${focusActivity.assets.largeImage}` : member.user.displayAvatarURL())
-        .setDescription(activities.map((x, i) => `**${x.type}**: \`${x.name || "None"} : ${x.details || "None"} : ${x.state || "None"}\``).join("\n"))
+        .setDescription(activities.map((x, i) => `**${x.type}**: \n> \`${x.name || "None"} : ${x.details || "None"} : ${x.state || "None"}\``).join("\n"))
         .addField("JoinedAt", `<t:${member.joinedTimestamp.toString().slice(0, -3)}:R>`, true)
         .addField("Account Created At", `<t:${member.user.createdTimestamp.toString().slice(0, -3)}:R>`, true)
         .addField("Common Information", [
