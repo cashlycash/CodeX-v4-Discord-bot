@@ -18,7 +18,10 @@ module.exports = async (client) => {
     arrayOfSlashCommands.push(file);
   });
   client.on("ready", async () => {
-      client.guilds.cache.get(client.config.server).commands.set(arrayOfSlashCommands).catch((e) => {
+    client.guilds.cache
+      .get(client.config.server)
+      .commands.set(arrayOfSlashCommands)
+      .catch((e) => {
         return;
       });
   });
@@ -44,18 +47,18 @@ module.exports = async (client) => {
 
   //Event Handler
   const eventfiles = await globPromise(`${process.cwd()}/events/*.js`);
-  eventfiles.map((value) => require(value)); 
+  eventfiles.map((value) => require(value));
 
   //Button Handler
   const btnsf = await globPromise(`${process.cwd()}/buttons/*.js`);
   btnsf.map((value) => {
-    const file = require(value)
+    const file = require(value);
     if (!file?.id) return;
-    client.btns.set(file.id, file)
-  }); 
+    client.btns.set(file.id, file);
+  });
   client.on("interactionCreate", async (interaction) => {
     if (interaction.isButton()) {
-      client.btns.get(interaction.customId)?.run(client, interaction)
+      client.btns.get(interaction.customId)?.run(client, interaction);
     }
-  })
+  });
 };

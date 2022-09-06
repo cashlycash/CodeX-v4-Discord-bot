@@ -10,7 +10,7 @@ module.exports = {
 
     await interaction.deferReply();
     var c = interaction.channel;
-    const au = c.name.split('-')[1];
+    const au = c.name.split("-")[1];
     c.permissionOverwrites.create(au, { VIEW_CHANNEL: false });
 
     const att = await discordTranscripts.createTranscript(c);
@@ -33,7 +33,7 @@ module.exports = {
       embeds: [emb],
       components: [btn],
     };
-    
+
     var sc = client.channels.cache.get(client.config.ticket.scripts);
     if (sc) {
       sc.send({
@@ -46,7 +46,7 @@ module.exports = {
         const emb = new MessageEmbed()
           .setTitle("Ticket Transcript")
           .setURL(link)
-          .setDescription(`**URL -** ${link}`)
+          .setDescription(`**URL -** ${link}`);
         msg.edit({ embeds: [emb] });
       });
     }

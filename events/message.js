@@ -1,11 +1,13 @@
 const client = require("../index.js");
 
 client.on("messageCreate", async (message) => {
-  const i = await message.content.match(/(https:\/\/)?(www\.)?(((discord(app)?)?\.com\/invite)|((discord(app)?)?\.gg))\/(?<invite>.+)/gm)
-  if (i && !message.member.permissions.has(['ADMINISTRATOR'])){
-    await message.reply('NO DISCORD INVITES PLEASE')
-    await message.delete()
-    return
+  const i = await message.content.match(
+    /(https:\/\/)?(www\.)?(((discord(app)?)?\.com\/invite)|((discord(app)?)?\.gg))\/(?<invite>.+)/gm
+  );
+  if (i && !message.member.permissions.has(["ADMINISTRATOR"])) {
+    await message.reply("NO DISCORD INVITES PLEASE");
+    await message.delete();
+    return;
   }
   if (message.author.bot) return;
   const prefix = client.config.prefix;

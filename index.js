@@ -1,9 +1,9 @@
 const { Client, Collection } = require("discord.js");
 const Nuggies = require("nuggies");
-const discordModals = require('discord-modals');
-const logs = require('discord-logs');
+const discordModals = require("discord-modals");
+const logs = require("discord-logs");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const client = new Client({
   intents: [
@@ -24,29 +24,29 @@ const client = new Client({
   ],
   partials: ["CHANNEL"],
   allowedMentions: {
-    parse: ['roles', 'users', 'everyone']
-  }
+    parse: ["roles", "users", "everyone"],
+  },
 });
 
-process.on('unhandledRejection', error => {
-  console.log(error)
+process.on("unhandledRejection", (error) => {
+  console.log(error);
 });
 
-discordModals(client)
+discordModals(client);
 logs(client, {
-    debug: false
+  debug: false,
 });
-Nuggies.handleInteractions(client)
+Nuggies.handleInteractions(client);
 
-client.ctbully = []
-client.commands = new Collection()
-client.aliases = new Collection()
+client.ctbully = [];
+client.commands = new Collection();
+client.aliases = new Collection();
 client.slashCommands = new Collection();
 client.btns = new Collection();
-client.config = require('./config.json')
+client.config = require("./config.json");
 
-require('./handler')(client);
+require("./handler")(client);
 
-module.exports = client
+module.exports = client;
 
-client.login(process.env.token)
+client.login(process.env.token);

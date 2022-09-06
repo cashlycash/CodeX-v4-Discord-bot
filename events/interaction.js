@@ -1,7 +1,5 @@
 const client = require("../index.js");
-const {
-  MessageEmbed,
-} = require("discord.js");
+const { MessageEmbed } = require("discord.js");
 
 client.on("modalSubmit", async (interaction) => {
   const s = interaction.customId.split(":");
@@ -28,9 +26,9 @@ client.on("modalSubmit", async (interaction) => {
       });
     }
 
-    client.config.verify.roles.forEach(r => {
-      interaction.member.roles.add(r)
-    })
+    client.config.verify.roles.forEach((r) => {
+      interaction.member.roles.add(r);
+    });
     interaction.member.setNickname(`${name} | ${clas}-${sec}`);
 
     interaction.reply({

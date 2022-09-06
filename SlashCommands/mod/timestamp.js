@@ -1,5 +1,5 @@
 const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
-const ms = require('ms');
+const ms = require("ms");
 
 module.exports = {
   ephemeral: true,
@@ -7,17 +7,17 @@ module.exports = {
   description: "make a timestamp",
   options: [
     {
-            type: 3,
-            name: "time",
-            description: "time",
-            type: "STRING",
-            required: true
-        }
+      type: 3,
+      name: "time",
+      description: "time",
+      type: "STRING",
+      required: true,
+    },
   ],
   run: async (client, interaction) => {
-    let timeAdded = interaction.options.getString("time")
-    let time = Date.now() + ms(timeAdded)
-    time = time.toString().slice(0, -3)
-    interaction.followUp(`\`<t:${time}:R>\``)
+    let timeAdded = interaction.options.getString("time");
+    let time = Date.now() + ms(timeAdded);
+    time = time.toString().slice(0, -3);
+    interaction.followUp(`\`<t:${time}:R>\``);
   },
 };

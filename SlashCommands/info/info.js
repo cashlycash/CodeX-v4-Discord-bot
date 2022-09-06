@@ -31,7 +31,9 @@ module.exports = {
       new MessageButton()
         .setLabel("Talk to my daddy")
         .setStyle("LINK")
-        .setURL("https://discord.com/channels/1004104875522666578/1009473661381652552")
+        .setURL(
+          "https://discord.com/channels/1004104875522666578/1009473661381652552"
+        )
     );
     interaction.followUp({ embeds: [emb], components: [row] });
   },

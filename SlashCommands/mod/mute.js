@@ -1,9 +1,5 @@
-const {
-  MessageEmbed,
-  MessageButton,
-  MessageActionRow
-} = require("discord.js");
-const ms = require('ms');
+const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
+const ms = require("ms");
 
 module.exports = {
   ephemeral: true,
@@ -15,31 +11,33 @@ module.exports = {
       name: "time",
       description: "time",
       type: "STRING",
-      required: true
+      required: true,
     },
     {
       name: "user",
       description: "Person whom you want to mute",
       type: "USER",
-      required: true
+      required: true,
     },
     {
       name: "reason",
       description: "Why mute",
       type: "STRING",
-      required: true
-    }
+      required: true,
+    },
   ],
   run: async (client, interaction) => {
-    const u = interaction.options.getMember("user")
-    const r = interaction.options.getString("reason")
-    let timeAdded = interaction.options.getString("time")
+    const u = interaction.options.getMember("user");
+    const r = interaction.options.getString("reason");
+    let timeAdded = interaction.options.getString("time");
 
     const ea = new MessageEmbed()
-      .setTitle('You have been muted in SPECTRAL.HOST')
-      .setDescription(`**Staff Responsible** - <@!${interaction.user.id}> [${interaction.user.tag}]\n**Reason** - \`${r}\``)
-    u.timeout(ms(timeAdded), r)
-    u.send({ embeds: [ea] })
-    interaction.followUp('Done!')
+      .setTitle("You have been muted in SPECTRAL.HOST")
+      .setDescription(
+        `**Staff Responsible** - <@!${interaction.user.id}> [${interaction.user.tag}]\n**Reason** - \`${r}\``
+      );
+    u.timeout(ms(timeAdded), r);
+    u.send({ embeds: [ea] });
+    interaction.followUp("Done!");
   },
 };
