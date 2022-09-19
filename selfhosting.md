@@ -15,3 +15,7 @@ This is a command which when used, should be used along some player mentions and
 This will allow you to steal emojis from different servers (better discord links work as well)
 ### !eval ```js <code> ```
 This will allow you to complile any nodejs code direct from the bot (message variables will work as well)
+## config.json
+IN config.json most of the values are the ids but there can be others too. Use common sense for it.
+## Hosting
+I say use replit, heroku (about to die), or any host which allows nodejs applications

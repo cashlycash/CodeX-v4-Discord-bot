@@ -19,7 +19,7 @@ module.exports = {
       "Send messages in `roleID color label emoji` syntax! Once finished say `done`."
     );
 
-    const filter = (m) => m.author.id === message.author.id;
+    const filter = (m) => m.author.id == message.author.id;
     const collector = message.channel.createMessageCollector(filter, {
       max: Infinity,
     });
