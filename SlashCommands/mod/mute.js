@@ -27,12 +27,18 @@ module.exports = {
     },
   ],
   run: async (client, interaction) => {
+    if (!interaction.member.permissions.has("MANAGE_GUILD")) {
+      return interaction.followUp(
+        "You need `[MANAGE_GUILD]` permission to use this command"
+      );
+    }
+
     const u = interaction.options.getMember("user");
     const r = interaction.options.getString("reason");
     let timeAdded = interaction.options.getString("time");
 
     const ea = new MessageEmbed()
-      .setTitle("You have been muted in SPECTRAL.HOST")
+      .setTitle("You have been muted in CT LMAO")
       .setDescription(
         `**Staff Responsible** - <@!${interaction.user.id}> [${interaction.user.tag}]\n**Reason** - \`${r}\``
       );
