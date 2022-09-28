@@ -1,6 +1,6 @@
 <p align="center">
 
-<img src="https://img.shields.io/website?down_color=%23eb4034&down_message=OFFLINE&label=Bot%20status&logo=CodeTech%20bot&logoColor=%238135c4&style=for-the-badge&up_color=%2389c435&up_message=ONLINE&url=https%3A%2F%2Fcodetech-bot.herokuapp.com%2F">
+<img src="https://img.shields.io/website?down_color=%23eb4034&down_message=OFFLINE&label=Bot%20status&logo=CodeTech%20bot&logoColor=%238135c4&style=for-the-badge&up_color=%2389c435&up_message=ONLINE&url=https%3A%2F%2Fctbot.onrender.com">
 </p>
 
 # CodeTech Discord bot
