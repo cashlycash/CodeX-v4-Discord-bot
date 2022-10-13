@@ -3,7 +3,7 @@ const Nuggies = require("nuggies");
 const discordModals = require("discord-modals");
 const logs = require("discord-logs");
 
-// require("dotenv").config();
+require("dotenv").config();
 
 const client = new Client({
   intents: [
@@ -49,4 +49,4 @@ require("./handler")(client);
 
 module.exports = client;
 
-client.login(process.env.token);
+client.login("MTAwNDEwNTMxNjgwMTE4Mzc3NQ.G3IjgY.p3e8_Gd4X59c346kRMGDaCqUa0OkSLx2Z2Qc9g");
