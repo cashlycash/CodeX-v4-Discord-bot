@@ -12,7 +12,7 @@ async function keepAlive(client) {
     }
   });
 
-  app.listen(process.env.PORT || 69420, () =>
+  app.listen(process.env.PORT || 3000, () =>
     console.log(`App listening on https://localhost:69420/`)
   );
 }

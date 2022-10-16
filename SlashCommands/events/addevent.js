@@ -1,11 +1,10 @@
-const {
-  Modal,
-  TextInputComponent,
-  SelectMenuComponent,
-} = require("discord-modals");
+const { MessageButton, MessageActionRow } = require("discord.js");
+const { Modal, TextInputComponent } = require("discord-modals");
 
 module.exports = {
   name: "addevent",
+  np: true,
+  ephemeral: true,
   description: "MOD ONLY",
   run: async (client, interaction) => {
     if (!interaction.member.permissions.has("MANAGE_GUILD")) {
@@ -22,7 +21,7 @@ module.exports = {
           .setCustomId("name")
           .setLabel("Name")
           .setStyle("SHORT")
-          .setPlaceholder("WPlease enter the event name")
+          .setPlaceholder("Please enter the event name")
           .setRequired(true),
         new TextInputComponent()
           .setCustomId("host")
@@ -45,9 +44,9 @@ module.exports = {
         new TextInputComponent()
           .setCustomId("sub")
           .setLabel("Sub Events")
-          .setStyle("LONG")
+          .setStyle("SHORT")
           .setPlaceholder("Sub events in format - name:desc , name:desc")
-          .setRequired(true),
+          .setRequired(true)
       );
     interaction.showModal(modal);
   },
