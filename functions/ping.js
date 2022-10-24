@@ -44,7 +44,7 @@ function ping(message){
 					.setCustomId("ping_reload")
 					.setStyle("DANGER")
 					.setLabel("Refresh")
-					.setEmoji("914944293695782942")
+					.setEmoji("1033839755223375965")
 			)
 		return { embeds: [emb], components: [btn] }
 }

@@ -15,7 +15,7 @@ const start = (userid, uniqueid) => {
   "HERE SHOWCASE A WAY FOR PEOPLE TO VOTE, DEVOTE, END + SET FUNCTIONS ACCORDINGLY"
 };
 
-// incase u want to get btn1 and btn2 values
+// incase u want to get btn1 and btn2 values on start
 const getbtns = () => {
   const btn1 = db.set(`${uniqueid}:btns:1`, 0)
   const btn2 = db.set(`${uniqueid}:btns:2`, 0)
@@ -26,12 +26,12 @@ const getbtns = () => {
 
 // function to set button 1's value
 const setbtn1 = (value) => {
-  // code to set the value to no button
+  // code to set the value to "no" button
 }
 
 // function to set button 2's value
 const setbtn2 = (value) => {
-  // code to set the value to yes button
+  // code to set the value to "yes" button
 }
 
 // call this if upvote is clicked
@@ -44,7 +44,7 @@ const up = (userid, uniqueid, setbtn1, setbtn2) => {
   // check if it was a no
   if (db.get(vp) == "no") {
     // remove the reaction from no and add it to yes
-    const x = parseInt(btn2) - 1; // remove one nuber from no
+    const x = parseInt(btn2) - 1; // remove one number from no
     setbtn2(x); // set no to the removed number
     const x2 = parseInt(btn1) + 1; // add one number to yes
     setbtn1(x2); // set yes to the added number

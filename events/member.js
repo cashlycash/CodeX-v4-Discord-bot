@@ -26,6 +26,10 @@ client.on("guildMemberRemove", async (member) => {
     .get(client.config.leave.channel)
     .send({ embeds: [emb] });
 
+  code = await db.get(`join_${member.user.id}`);
+  db.add(`code_${code}`, 1);
+  db.delete(`join_${interaction.user.id}`);
+
   var count = member.guild.members.cache;
   const no = count.size;
   client.channels.cache

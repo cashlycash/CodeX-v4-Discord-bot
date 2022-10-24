@@ -8,8 +8,8 @@ const {
 const db = require(`quick.db`)
 
 module.exports = {
-  name: "events",
-  description: "events",
+  name: "subevents",
+  description: "subevents of CODEx v4.0",
   run: async (client, interaction) => {
     
 		const events = db.get('events')
@@ -27,7 +27,7 @@ module.exports = {
 						events.map((event, index) => {
 							return {
 								label: event.name,
-								description: `Hosted By - ${event.host}`,
+								description: `Class - ${event.clas}`,
 								value: index.toString(),
 							}
 						})
