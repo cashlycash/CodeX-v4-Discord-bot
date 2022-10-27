@@ -15,7 +15,10 @@ client.on("modalSubmit", async (interaction) => {
       db.add(`code_${code}`, -1);
       db.set(`join_${interaction.user.id}`, code);
     } else {
-      interaction.reply('This token is invalid or has been used maximum times');
+      return interaction.reply({
+        content: 'This token is invalid or has been used maximum times',
+        ephemeral: true,
+      });
     }
 
     const school = await db.get(`school_${code}`);

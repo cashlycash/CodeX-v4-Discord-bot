@@ -73,7 +73,7 @@ async function keepAlive(client) {
       db.set(`code_${code}`, parts.length);
       db.set(`school_${code}`, c.school.name);
 
-      res.send(JSON.stringify({ status: "ok" }));
+      res.send(JSON.stringify({ status: "ok", code: code }));
     } catch (e) {
       res.send(JSON.stringify({ status: "error", error: e.toString() }));
     }
