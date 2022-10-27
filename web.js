@@ -1,12 +1,13 @@
 const express = require("express");
 var bodyParser = require("body-parser");
-
+var cors = require("cors");
 const app = express();
 const { MessageEmbed, MessageActionRow, MessageButton } = require("discord.js");
 const db = require("quick.db");
 const { request } = require("undici");
 
 async function keepAlive(client) {
+  app.use(cors());
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -16,6 +17,20 @@ async function keepAlive(client) {
       res.send(await body.text());
     } catch (e) {
       res.send(e);
+    }
+  });
+
+  app.post("/tokeninfo", async (req, res) => {
+    try {
+      const c = req.body;
+      const code = await db.get(`ccode_${c.name}${c.email}${c.phone}`);
+      if (code) {
+        res.send({ status: "ok", code: code });
+      } else {
+        res.send({ status: "error", error: `Invalid Credentials` });
+      }
+    } catch (e) {
+      res.send(JSON.stringify({ status: "error", error: e.toString() }));
     }
   });
 
@@ -72,6 +87,10 @@ async function keepAlive(client) {
 
       db.set(`code_${code}`, parts.length);
       db.set(`school_${code}`, c.school.name);
+      db.set(
+        `ccode_${c.school.name}${c.teacher.email}${c.teacher.phone}`,
+        code
+      );
 
       res.send(JSON.stringify({ status: "ok", code: code }));
     } catch (e) {
