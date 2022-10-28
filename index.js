@@ -3,6 +3,8 @@ const Nuggies = require("nuggies");
 const discordModals = require("discord-modals");
 const logs = require("discord-logs");
 
+const { MySQLDriver } = require("quick.db");
+
 (async () => {
   const mysqlDriver = new MySQLDriver({
     host: "mysql-7nnl",
