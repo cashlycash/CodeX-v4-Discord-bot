@@ -3,7 +3,16 @@ const Nuggies = require("nuggies");
 const discordModals = require("discord-modals");
 const logs = require("discord-logs");
 
-require("dotenv").config();
+(async () => {
+  const mysqlDriver = new MySQLDriver({
+    host: "mysql-7nnl",
+    user: "mysql",
+    password: "passcode",
+    database: "mysql",
+  });
+
+  await mysqlDriver.connect();
+})();
 
 const client = new Client({
   intents: [
@@ -49,4 +58,4 @@ require("./handler")(client);
 
 module.exports = client;
 
-client.login("MTAwNDEwNTMxNjgwMTE4Mzc3NQ.G3IjgY.p3e8_Gd4X59c346kRMGDaCqUa0OkSLx2Z2Qc9g");
+client.login(process.env.token);
