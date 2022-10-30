@@ -23,13 +23,14 @@ async function keepAlive(client) {
   app.post("/tokeninfo", async (req, res) => {
     try {
       const c = req.body;
-      const code = await db.get(`ccode_${c.name}${c.email}${c.phone}`);
+      const code = await db.get(`ccode_${c.name.replaceAll(' ', "")}${c.email.replaceAll(' ','')}${c.phone.replaceAll(' ','')}`);
       if (code) {
         res.send({ status: "ok", code: code });
       } else {
         res.send({ status: "error", error: `Invalid Credentials` });
       }
     } catch (e) {
+      console.log(e)
       res.send(JSON.stringify({ status: "error", error: e.toString() }));
     }
   });
@@ -88,7 +89,7 @@ async function keepAlive(client) {
       db.set(`code_${code}`, parts.length);
       db.set(`school_${code}`, c.school.name);
       db.set(
-        `ccode_${c.school.name}${c.teacher.email}${c.teacher.phone}`,
+        `ccode_${c.school.name.replaceAll(' ', "")}${c.teacher.email.replaceAll(' ', "")}${c.teacher.phone.replaceAll(' ', "")}`,
         code
       );
 

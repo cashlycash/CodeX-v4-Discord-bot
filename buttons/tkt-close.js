@@ -10,10 +10,27 @@ module.exports = {
 
     await interaction.deferReply();
     var c = interaction.channel;
-    const au = c.name.split("-")[1];
+    const au = c.topic.slice(14, -1);
     c.permissionOverwrites.create(au, { VIEW_CHANNEL: false });
 
     const att = await discordTranscripts.createTranscript(c);
+
+    var link = ""
+    var sc = client.channels.cache.get(client.config.ticket.scripts);
+    if (sc) {
+      sc.send({
+        content: `Ticket of <@!${au}>`,
+        files: [att],
+      }).then((msg) => {
+        link = `https://support.spectral.host/?url=${msg.attachments.first().url
+          }`;
+        const emb = new MessageEmbed()
+          .setTitle("Ticket Transcript")
+          .setURL(link)
+          .setDescription(`**URL -** ${link}`);
+        msg.edit({ embeds: [emb] });
+      });
+    }
 
     const btn = new MessageActionRow().setComponents(
       new MessageButton()
@@ -21,6 +38,15 @@ module.exports = {
         .setCustomId("tkt:d")
         .setStyle("DANGER")
     );
+    
+    if (link !== "") {
+      btn.addComponents(new MessageButton()
+        .setLabel("Ticket Transcript")
+        .setStyle("LINK")
+        .setURL(link)
+      );
+    }
+
     const emb = new MessageEmbed()
       .setTitle("The ticket was closed!")
       .setDescription(
@@ -34,28 +60,11 @@ module.exports = {
       components: [btn],
     };
 
-    var sc = client.channels.cache.get(client.config.ticket.scripts);
-    if (sc) {
-      sc.send({
-        content: `Ticket of <@!${au}>`,
-        files: [att],
-      }).then((msg) => {
-        link = `https://support.spectral.host/?url=${
-          msg.attachments.first().url
-        }`;
-        const emb = new MessageEmbed()
-          .setTitle("Ticket Transcript")
-          .setURL(link)
-          .setDescription(`**URL -** ${link}`);
-        msg.edit({ embeds: [emb] });
-      });
-    }
-
     c = c.setName(`closed-${au}`);
 
     interaction.followUp(stuf);
 
-    stuf.components = [];
+    stuf.components.components.shift();
     client.users.cache
       .get(au)
       .send(stuf)

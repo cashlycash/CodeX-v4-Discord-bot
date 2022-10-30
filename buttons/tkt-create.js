@@ -7,16 +7,18 @@ module.exports = {
       (r) => r.name == "@everyone"
     );
     const ce = interaction.guild.channels.cache.find(
-      (ch) => ch.name == `ticket-${interaction.user.id}`
+      (ch) => ch.topic == `Ticket for <@!${interaction.user.id}>`
     );
     if (ce) {
-      return interaction.reply({
+      return interaction.update({
         content: `Please close your existing ticket (<#${ce.id}>)`,
+        components: [],
+        embeds: [],
         ephemeral: true,
       });
     }
     interaction.guild.channels
-      .create(`ticket-${interaction.user.id}`, {
+      .create(`ticket-${interaction.user.username}`, {
         topic: `Ticket for <@!${interaction.user.id}>`,
         parent: client.config.ticket.categ,
       })
@@ -35,7 +37,7 @@ module.exports = {
         const emb = new MessageEmbed()
           .setTitle(`Hey! ${interaction.user.tag}`)
           .setDescription(
-            "Please do not ping the staff they have already been pinged"
+            "`Please do not ping the staff they have already been pinged`"
           )
           .setColor("BLURPLE");
 
@@ -51,8 +53,10 @@ module.exports = {
           embeds: [emb],
           components: [btn],
         });
-        interaction.reply({
+        interaction.update({
           content: `> **Done!**, Check <#${c.id}>`,
+          components: [],
+          embeds: [],
           ephemeral: true,
         });
       });
