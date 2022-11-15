@@ -7,11 +7,11 @@ client.on("guildMemberAdd", async (member) => {
     const welcome = new MessageEmbed()
       .setColor("#3cff00")
       .setTimestamp()
-      .setTitle(`${interaction.user.username}, Welcome to ${member.guild.name}!`)
+      .setTitle(`${member.user.username}, Welcome to ${member.guild.name}!`)
       .setDescription(
         `Collect roles from <#${client.config.verify.channels.eventroles}> to get access to respective event updates. Incase of any queries use <#${client.config.verify.channels.ticket}>.`
       )
-      .setThumbnail(await interaction.member.user.avatarURL({ dynamic: true }))
+      .setThumbnail(await member.user.avatarURL({ dynamic: true }))
       .setFooter({
         text: `We hope you have a good time at ${member.guild.name}`,
         iconURL: member.guild.iconURL({ dynamic: true }),
@@ -19,7 +19,7 @@ client.on("guildMemberAdd", async (member) => {
 
     client.channels.cache
       .get(client.config.verify.channel)
-      .send({ content: `<@!${interaction.user.id}>`, embeds: [welcome] });
+      .send({ content: `<@!${member.user.id}>`, embeds: [welcome] });
 
     var count = member.guild.members.cache;
     const no = count.filter((member) => !member.user.bot).size;
@@ -40,7 +40,7 @@ client.on("guildMemberRemove", async (member) => {
 
   code = await db.get(`join_${member.user.id}`);
   db.add(`code_${code}`, 1);
-  db.delete(`join_${interaction.user.id}`);
+  db.delete(`join_${member.user.id}`);
 
   var count = member.guild.members.cache;
   const no = count.size;
