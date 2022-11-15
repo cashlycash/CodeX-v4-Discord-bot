@@ -3,8 +3,6 @@ const client = require("../index");
 const db = require("quick.db");
 
 client.on("guildMemberAdd", async (member) => {
-  
-    const member = interaction.member;
 
     const welcome = new MessageEmbed()
       .setColor("#3cff00")
