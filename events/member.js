@@ -3,17 +3,31 @@ const client = require("../index");
 const db = require("quick.db");
 
 client.on("guildMemberAdd", async (member) => {
-  const row = new MessageActionRow().setComponents(
-    new MessageButton()
-      .setLabel("Verify portal")
-      .setStyle("LINK")
-      .setURL(client.config.verify.panelurl)
-  );
-  member.send({
-    content:
-      "> Please verify yourself to get the full access of the server\n> Click the button below to go the verification portal",
-    components: [row],
-  });
+  
+    const member = interaction.member;
+
+    const welcome = new MessageEmbed()
+      .setColor("#3cff00")
+      .setTimestamp()
+      .setTitle(`${interaction.user.username}, Welcome to ${member.guild.name}!`)
+      .setDescription(
+        `Collect roles from <#${client.config.verify.channels.eventroles}> to get access to respective event updates. Incase of any queries use <#${client.config.verify.channels.ticket}>.`
+      )
+      .setThumbnail(await interaction.member.user.avatarURL({ dynamic: true }))
+      .setFooter({
+        text: `We hope you have a good time at ${member.guild.name}`,
+        iconURL: member.guild.iconURL({ dynamic: true }),
+      });
+
+    client.channels.cache
+      .get(client.config.verify.channel)
+      .send({ content: `<@!${interaction.user.id}>`, embeds: [welcome] });
+
+    var count = member.guild.members.cache;
+    const no = count.filter((member) => !member.user.bot).size;
+    client.channels.cache
+      .get(client.config.count.channel)
+      .setName(client.config.count.format.replace(`:no:`, no));
 });
 
 client.on("guildMemberRemove", async (member) => {
