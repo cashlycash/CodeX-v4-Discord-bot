@@ -1,5 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const owners = ["908554250945183744"];
+const owners = ["908554250945183744","740336617566503032","549216305757028352","839546309723029575"];
 
 module.exports = {
   name: "eval",
