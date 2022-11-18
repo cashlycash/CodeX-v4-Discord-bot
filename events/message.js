@@ -9,6 +9,14 @@ client.on("messageCreate", async (message) => {
     await message.delete();
     return;
   }
+  if (
+    message.content.includes('1042993038974271508') || 
+    message.content.toLowerCase().replace(' ', '').includes('jamesford')
+  ) {
+    message.author.send('<@!1042993038974271508>')
+    message.delete()
+    return;
+  }
   if (message.author.bot) return;
   const prefix = client.config.prefix;
   var args = message.content.slice(prefix.length).trim().split(/ +/g);
