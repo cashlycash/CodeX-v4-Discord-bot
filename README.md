@@ -14,6 +14,6 @@ The logic for vote command has been put in [`vote-logic.js`](https://github.com/
 The main reason I used `config.json` is so that incase we need to use this bot in a new server, I won't need to go to every file in code and change stuff. I can just change in config.json and rehost it (will save time) + people who want to use this bot in there own server can do so easily as well
 ## Self hosting
 If you want to use this bot in your server then please visit [`selfhosting.md`](https://github.com/ArnavGupta30/ct-bot/blob/main/selfhosting.md)
-## Forked code 😋
+## Copied code 😋
 - Handler : [`reconlx`](https://github.com/reconlx)
 - Bully Comments : [`Pancham2001`](https://github.com/https://github.com/reconlx)
