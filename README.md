@@ -15,5 +15,5 @@ The main reason I used `config.json` is so that incase we need to use this bot i
 ## Self hosting
 If you want to use this bot in your server then please visit [`selfhosting.md`](https://github.com/ArnavGupta30/ct-bot/blob/main/selfhosting.md)
 ## Copied code 😋
-- Handler : [`reconlx`](https://github.com/reconlx)
+- Handler (modified) : [`reconlx`](https://github.com/reconlx)
 - Bully Comments : [`Pancham2001`](https://github.com/https://github.com/reconlx)
