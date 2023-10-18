@@ -4,7 +4,7 @@
 </p>
 
 # CodeTech Discord bot
-This is a Discord Bot for the CodeTech BitByBit v4.0's server
+This is a Discord Bot for BVN CodeTech's CodeX v4.0's server
 
 ![Lines of code](https://img.shields.io/tokei/lines/github/ArnavGupta30/ct-bot?style=for-the-badge) ![GitHub repo file count](https://img.shields.io/github/directory-file-count/ArnavGupta30/ct-bot?style=for-the-badge) ![GitHub repo size](https://img.shields.io/github/repo-size/ArnavGupta30/ct-bot?style=for-the-badge)
 ## Logics
